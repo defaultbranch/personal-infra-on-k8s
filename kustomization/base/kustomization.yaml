@@ -2,7 +2,7 @@ namespace: private-infra
 
 resources:
 - namespace.yaml
-- static-ip-svc.yaml
+- public-static-ip-svc.yaml
 
 helmCharts:
 - name: ingress-nginx
