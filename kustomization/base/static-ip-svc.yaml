@@ -1,0 +1,22 @@
+# initial copy from <https://github.com/kubernetes/ingress-nginx/blob/main/docs/examples/static-ip/static-ip-svc.yaml>
+# adaptation according to <https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer>
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  selector:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+  type: LoadBalancer
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+  - port: 443
+    name: https
+    targetPort: 443

@@ -1,0 +1,5 @@
+namespace: private-infra
+
+resources:
+- namespace.yaml
+- static-ip-svc.yaml
