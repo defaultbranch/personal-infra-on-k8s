@@ -11,14 +11,14 @@ helmCharts:
   releaseName: ingress-nginx
   valuesInline:
     controller:
-      replicaCount: 2
+      replicaCount: 1
       resources:
         requests:
           cpu: 100m
           memory: 90Mi
       service:
         external:
-          enabled: false
+          enabled: true  # true is the default
       publishService:
         enabled: true
-        pathOverride: my-service
+        pathOverride: private-infra/public-static-ip
