@@ -3,3 +3,22 @@ namespace: private-infra
 resources:
 - namespace.yaml
 - static-ip-svc.yaml
+
+helmCharts:
+- name: ingress-nginx
+  version: 4.2.1
+  repo: https://kubernetes.github.io/ingress-nginx
+  releaseName: ingress-nginx
+  valuesInline:
+    controller:
+      replicaCount: 2
+      resources:
+        requests:
+          cpu: 100m
+          memory: 90Mi
+      service:
+        external:
+          enabled: false
+      publishService:
+        enabled: true
+        pathOverride: my-service

@@ -22,6 +22,22 @@ Go to <https://my.vultr.com/kubernetes/add/> for:
 
 ## Deploy
 
-- static IP, see [static-ip-svc.yaml](kustomization/base/static-ip-svc.yaml)
+- for static IP, see [static-ip-svc.yaml](kustomization/base/static-ip-svc.yaml)
   (this is a separate service, so the actual load balancer, e.g. nginx, can be cycled without loosing the static IP;
-  see <https://kubernetes.github.io/ingress-nginx/examples/static-ip/>)
+  see <https://kubernetes.github.io/ingress-nginx/examples/static-ip/> or <https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/static-ip>)
+- for nginx loadbalancer from <https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx>,
+  see the helm chart section in [base/kustomization.yaml](kustomization/base/kustomization.yaml)
+
+**Problem** here the nginx still uses an own IP instead of the static IP
+
+Deploy (apply) the configuration with:
+
+```
+kubectl kustomize kustomization/base --enable-helm | kubectl apply -f -
+```
+
+**Dangerous** Rollback (delete) configuration with:
+
+```
+kubectl kustomize kustomization/base --enable-helm | kubectl delete -f -
+```

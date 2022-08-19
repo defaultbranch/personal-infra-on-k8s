@@ -6,12 +6,12 @@ kind: Service
 metadata:
   name: my-service
   labels:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx-controller
+    app.kubernetes.io/part-of: ingress-nginx-controller
 spec:
   selector:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx-controller
+    app.kubernetes.io/part-of: ingress-nginx-controller
   type: LoadBalancer
   ports:
   - port: 80
