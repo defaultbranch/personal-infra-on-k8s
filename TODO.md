@@ -1,0 +1,5 @@
+- install load balancer with stable public ip
+- install cert-manager
+- port dovecot
+- port postgres
+- port nextcloud
