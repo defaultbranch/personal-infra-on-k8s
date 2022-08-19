@@ -6,17 +6,20 @@ kind: Service
 metadata:
   name: public-static-ip
   labels:
+    app.kubernetes.io/component: controller
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
 spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
   selector:
+    app.kubernetes.io/component: controller
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
-  type: LoadBalancer
   ports:
-  - port: 80
-    name: http
+  - name: http
+    port: 80
     targetPort: 80
-  - port: 443
-    name: https
+  - name: https
+    port: 443
     targetPort: 443

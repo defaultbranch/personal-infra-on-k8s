@@ -19,6 +19,7 @@ helmCharts:
       service:
         external:
           enabled: true  # true is the default
+
       publishService:
         enabled: true
         pathOverride: private-infra/public-static-ip
